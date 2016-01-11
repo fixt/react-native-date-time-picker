@@ -22,11 +22,12 @@ const dateRange = () => {
 
 const renderDates = (dates) => {
   const today = new Date();
-  const currentYear = today.getFullYear();
-  const currentMonth = today.getMonth();
-  const currentDay = today.getDate();
-  const todayStart = new Date(currentYear, currentMonth, currentDay, 0, 0, 0 ,0);
-  const todayEnd = new Date(currentYear, currentMonth, currentDay, 23, 59, 59, 999);
+  const thisYear = today.getFullYear();
+  const thisMonth = today.getMonth();
+  const thisDay = today.getDate();
+  const todayStart = new Date(thisYear, thisMonth, thisDay, 0, 0, 0 ,0);
+  const todayEnd = new Date(thisYear, thisMonth, thisDay, 23, 59, 59, 999);
+  let year;
   return dates.map((date) => {
     if (todayStart <= date && todayEnd > date) {
       return "Today";
