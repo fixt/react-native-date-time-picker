@@ -3,7 +3,6 @@
 import React, { Component } from 'react-native';
 
 import DatePicker from './components/date-picker';
-//import TimePicker from './components/time-picker';
 import DateTimePicker from './components/date-time-picker';
 
 export default class DateTimePickers extends Component {
@@ -12,8 +11,6 @@ export default class DateTimePickers extends Component {
 
     if (mode === 'date') {
       return ( <DatePicker { ...props } /> );
-    //} else if (mode === 'time') {
-      //return ( <TimePicker { ...props } /> );
     } else {
       return ( <DateTimePicker { ...props } /> );
     }

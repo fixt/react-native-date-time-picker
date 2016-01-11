@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "react-native": "^0.18.0-rc",
-    "react-native-wheel": "fixt/react-native-wheel"
+    "react-native-wheel": "fixt/react-native-wheel",
+    "react-native-date-time-picker": "fixt/react-native-date-time-picker"
   }
 }
