@@ -215,5 +215,4 @@ DateTimePicker.propTypes = {
   minimumDate: React.PropTypes.instanceOf(Date),
   minuteInterval: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30]),
   onDateChange: React.PropTypes.func.isRequired,
-  timeZoneOffsetInMinutes: React.PropTypes.number,
 };

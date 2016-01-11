@@ -2,7 +2,7 @@
   "name": "react-native-date-time-picker",
   "version": "0.0.1",
   "description": "A Date and Time picker for Android more in the iOS selector style.",
-  "main": "index.js",
+  "main": "index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

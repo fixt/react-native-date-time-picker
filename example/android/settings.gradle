@@ -1,0 +1,6 @@
+rootProject.name = 'DateTimeExample'
+
+include ':app'
+
+include ':reactwheelview'
+project(':reactwheelview').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-wheel')

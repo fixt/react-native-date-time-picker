@@ -1,0 +1,13 @@
+{
+  "name": "DateTimeExample",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "open": "open ios/DateTimeExample.xcodeproj"
+  },
+  "dependencies": {
+    "react-native": "^0.18.0-rc",
+    "react-native-wheel": "fixt/react-native-wheel"
+  }
+}
