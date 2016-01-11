@@ -37,8 +37,8 @@ import com.heng.wheel.WheelPackage;
 ```
 
 ### To do
-- [] Add time picker.
-- [] Add support for `timeZoneOffsetInMinutes` property on `date-time-picker`.
-- [] (fork of `react-native-wheel`) add snapback animation when the wheels are reseting.
-- [] Move logic to `android` code (integrate further with react-native-wheel, merge projects).
-- [] Add support for automatically switching between am/pm.
+- [ ] Add time picker.
+- [ ] Add support for `timeZoneOffsetInMinutes` property on `date-time-picker`.
+- [ ] (fork of `react-native-wheel`) add snapback animation when the wheels are reseting.
+- [ ] Move logic to `android` code (integrate further with react-native-wheel, merge projects).
+- [ ] Add support for automatically switching between am/pm.
