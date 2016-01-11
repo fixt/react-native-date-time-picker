@@ -27,7 +27,7 @@ dependencies {
 
 #### `MainActivity.java`
 ```
-import com.fixt.wheel.WheelPackage;
+import co.fixt.wheel.WheelPackage;
 
 ...
 
