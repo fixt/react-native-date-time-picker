@@ -13,21 +13,21 @@ It works out of the box.  It just gives you `DatePickerIOS` from `react-native`.
 You'll need our fork of `react-native-wheel`, originally by shexiaoheng.
 #### `settings.gradle`
 ```
-include ':reactwheelview'
-project(':reactwheelview').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-date-time-picker/node_modules/react-native-wheel')
+include ':react-native-wheel-view'
+project(':react-native-wheel-view').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-date-time-picker/node_modules/react-native-wheel')
 ```
 
 #### `app/build.gradle`
 ```
 dependencies {
   compile ...
-  compile project(':reactwheelview')
+  compile project(':react-native-wheel-view')
 }
 ```
 
 #### `MainActivity.java`
 ```
-import com.heng.wheel.WheelPackage;
+import com.fixt.wheel.WheelPackage;
 
 ...
 
