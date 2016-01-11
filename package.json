@@ -17,6 +17,6 @@
   "author": "Isaac Madwed <i.madwed@gmail.com> (https://github.com/madwed)",
   "license": "ISC",
   "dependencies": {
-    "moment": "^2.10.6"
+    "react-native-wheel": "fixt/react-native-wheel"
   }
 }
