@@ -1,0 +1,22 @@
+{
+  "name": "react-native-date-time-picker",
+  "version": "0.0.1",
+  "description": "A Date and Time picker for Android more in the iOS selector style.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "React-Native",
+    "Android",
+    "Date",
+    "Time",
+    "Date-Time",
+    "Picker"
+  ],
+  "author": "Isaac Madwed <i.madwed@gmail.com> (https://github.com/madwed)",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.10.6"
+  }
+}
