@@ -81,8 +81,8 @@ export default class DateTimePicker extends Component {
     return false;
   }
 
-  setDateState(newDate, props) {
-    const { onDateChange } = props;
+  setDateState(newDate) {
+    const { onDateChange } = this.props;
 
     if (this.isValidDate(newDate)) { 
       const dateIndices = this.getDateIndices(newDate);
@@ -103,7 +103,7 @@ export default class DateTimePicker extends Component {
     let newDate = new Date(dates[index]);
     newDate.setHours(hours, minutes);
 
-    return this.setDateState(newDate, this.props);
+    return this.setDateState(newDate);
   }
 
   onHourChange(index) {
@@ -116,7 +116,7 @@ export default class DateTimePicker extends Component {
     let newDate = new Date(dates[dateIndex]);
     newDate.setHours(hours, minutes);
 
-    return this.setDateState(newDate, this.props);
+    return this.setDateState(newDate);
   }
   
   onMinuteChange(index) {
@@ -129,7 +129,7 @@ export default class DateTimePicker extends Component {
     let newDate = new Date(dates[dateIndex]);
     newDate.setHours(hours, minutes);
 
-    return this.setDateState(newDate, this.props);
+    return this.setDateState(newDate);
   }
 
   onAmpmChange(index) {
@@ -142,7 +142,13 @@ export default class DateTimePicker extends Component {
     let newDate = new Date(dates[dateIndex]);
     newDate.setHours(hours, minutes);
 
-    return this.setDateState(newDate, this.props);
+    return this.setDateState(newDate);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.date !== this.props.date) {
+      this.setDateState(nextProps.date);
+    }
   }
 
   render() {

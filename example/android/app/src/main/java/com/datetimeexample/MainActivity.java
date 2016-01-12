@@ -7,7 +7,7 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.List;
 
-import com.heng.wheel.WheelPackage;
+import co.fixt.wheel.WheelPackage;
 
 public class MainActivity extends ReactActivity {
 
