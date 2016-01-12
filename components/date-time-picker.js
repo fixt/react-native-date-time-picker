@@ -59,10 +59,10 @@ export default class DateTimePicker extends Component {
     const { minuteInterval } = this.props;
     let dateIndex = date.getTime() - MINDATE.getTime();
     dateIndex = Math.floor(dateIndex / MILLIS_DAY);
-    let hourIndex = date.getHours() % 12 - 1;
-    hourIndex = hourIndex === -1 ? 11 : hourIndex;
-    const minuteIndex = Math.floor(date.getMinutes() / minuteInterval);
+    let hourIndex = date.getHours() % 12;
     const ampmIndex = hourIndex === date.getHours() ? 0 : 1;
+    hourIndex = hourIndex === 0 ? 11 : hourIndex - 1;
+    const minuteIndex = Math.floor(date.getMinutes() / minuteInterval);
 
     return {
       dateIndex,
@@ -72,77 +72,64 @@ export default class DateTimePicker extends Component {
     };
   }
 
-  isValidDate(date) {
+  setDateState(date) {
+    const { onDateChange } = this.props;
     const minimumDate = this.props.minimumDate || MINDATE;
     const maximumDate = this.props.maximumDate || MAXDATE;
-    if (date > minimumDate && date < maximumDate) {
-      return true;
+    
+
+    if (date < minimumDate) {
+      var dateIndices = this.getDateIndices(minimumDate);
+      var newDate = minimumDate;
+    } else if (date > maximumDate) {
+      var dateIndices = this.getDateIndices(maximumDate);
+      var newDate = maximumDate;
+    } else { 
+      var dateIndices = this.getDateIndices(date);
+      var newDate = date;
     }
-    return false;
+
+    this.setState(dateIndices);
+    onDateChange(newDate);
   }
 
-  setDateState(newDate) {
-    const { onDateChange } = this.props;
-
-    if (this.isValidDate(newDate)) { 
-      const dateIndices = this.getDateIndices(newDate);
-      this.setState(dateIndices);
-      onDateChange(newDate);
-      return true;
-    }
-    return false; 
+  getNewDate(dateIndex, hourIndex, minuteIndex, ampmIndex) {
+    let hours = hourIndex + 1;
+    hours = ampmIndex === 0 ? hours : hours + 12;
+    hours = hours === 12 ? 0 : hours;
+    hours = hours === 24 ? 12 : hours;
+    let minutes = minuteIndex * this.props.minuteInterval;
+    let newDate = new Date(dates[dateIndex]);
+    newDate.setHours(hours, minutes);
+    return newDate;
   }
 
   onDateChange(index) {
     const { minuteInterval } = this.props;
     const { hourIndex, minuteIndex, ampmIndex } = this.state;
-    let hours = hourIndex + 1;
-    hours = ampmIndex === 0 ? hours : hours + 12;
-    hours = hours === 24 ? 0 : hours;
-    let minutes = minuteIndex * minuteInterval;
-    let newDate = new Date(dates[index]);
-    newDate.setHours(hours, minutes);
-
-    return this.setDateState(newDate);
+    let newDate = this.getNewDate(index, hourIndex, minuteIndex, ampmIndex);
+    this.setDateState(newDate);
   }
 
   onHourChange(index) {
     const { minuteInterval } = this.props;
     const { dateIndex, minuteIndex, ampmIndex } = this.state;
-    let hours = index + 1;
-    hours = ampmIndex === 0 ? hours : hours + 12;
-    hours = hours === 24 ? 0 : hours;
-    let minutes = minuteIndex * minuteInterval;
-    let newDate = new Date(dates[dateIndex]);
-    newDate.setHours(hours, minutes);
-
-    return this.setDateState(newDate);
+    let newDate = this.getNewDate(dateIndex, index, minuteIndex, ampmIndex);
+    this.setDateState(newDate);
   }
   
   onMinuteChange(index) {
     const { minuteInterval } = this.props;
     const { dateIndex, hourIndex, ampmIndex } = this.state;
-    let hours = hourIndex + 1;
-    hours = ampmIndex === 0 ? hours : hours + 12;
-    hours = hours === 24 ? 0 : hours;
-    let minutes = index * minuteInterval;
-    let newDate = new Date(dates[dateIndex]);
-    newDate.setHours(hours, minutes);
-
-    return this.setDateState(newDate);
+    let newDate = this.getNewDate(dateIndex, hourIndex, index, ampmIndex);
+    this.setDateState(newDate);
   }
 
   onAmpmChange(index) {
     const { minuteInterval } = this.props;
     const { dateIndex, hourIndex, minuteIndex } = this.state;
-    let hours = hourIndex + 1;
-    hours = index === 0 ? hours : hours + 12;
-    hours = hours === 24 ? 0 : hours;
-    let minutes = minuteIndex * minuteInterval;
-    let newDate = new Date(dates[dateIndex]);
-    newDate.setHours(hours, minutes);
-
-    return this.setDateState(newDate);
+    let newDate = this.getNewDate(dateIndex, hourIndex, minuteIndex, index);
+    this.setDateState(newDate);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -155,6 +142,7 @@ export default class DateTimePicker extends Component {
     const { dateIndex, hourIndex, minuteIndex, ampmIndex } = this.state;
     return (
       <View style={{
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'center'
       }}
