@@ -87,7 +87,7 @@ export default class DatePicker extends Component {
         <WheelView
           style={{
             width: 150,
-            height: 240,
+            height: 153,
           }}
           onItemChange={this.onMonthChange.bind(this)}
           values={months}
@@ -98,7 +98,7 @@ export default class DatePicker extends Component {
         <WheelView
           style={{
             width: 50,
-            height: 250,
+            height: 153,
           }}
           onItemChange={this.onDayChange.bind(this)}
           values={days}
@@ -109,7 +109,7 @@ export default class DatePicker extends Component {
         <WheelView
           style={{
             width: 100,
-            height: 250,
+            height: 153,
           }}
           onItemChange={this.onYearChange.bind(this)}
           values={years}
