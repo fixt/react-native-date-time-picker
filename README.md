@@ -37,6 +37,7 @@ import co.fixt.wheel.WheelPackage;
 ```
 
 ### To do
+- [ ] Add date picker.
 - [ ] Add time picker.
 - [ ] Add support for `timeZoneOffsetInMinutes` property on `date-time-picker`.
 - [ ] On fork of `react-native-wheel`, add snapback animation when the wheels are reseting.
