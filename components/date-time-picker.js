@@ -140,6 +140,7 @@ export default class DateTimePicker extends Component {
 
   render() {
     const { dateIndex, hourIndex, minuteIndex, ampmIndex } = this.state;
+    const { textSize } = this.props;
     return (
       <View style={{
         flex: 1,
@@ -158,7 +159,7 @@ export default class DateTimePicker extends Component {
           values={dateStrings}
           isLoop={false}
           selectedIndex={dateIndex}
-          textSize={20}
+          textSize={textSize}
         />
         <WheelView
           style={{
@@ -169,7 +170,7 @@ export default class DateTimePicker extends Component {
           values={hours}
           isLoop={true}
           selectedIndex={hourIndex}
-          textSize={20}
+          textSize={textSize}
         />
         <WheelView
           style={{
@@ -180,7 +181,7 @@ export default class DateTimePicker extends Component {
           values={minutes}
           isLoop={true}
           selectedIndex={minuteIndex}
-          textSize={20}
+          textSize={textSize}
         />
         <WheelView
           style={{
@@ -191,7 +192,7 @@ export default class DateTimePicker extends Component {
           values={ampm}
           isLoop={false}
           selectedIndex={ampmIndex}
-          textSize={20}
+          textSize={textSize}
         />
       </View>
     );
@@ -203,6 +204,7 @@ DateTimePicker.defaultProps = {
   maximumDate: new Date(new Date().getFullYear() + 25, 11, 31),
   minimumDate: new Date(1999, 11, 31),
   minuteInterval: 1,
+  textSize: 20,
 };
 
 DateTimePicker.propTypes = {
@@ -211,4 +213,5 @@ DateTimePicker.propTypes = {
   minimumDate: React.PropTypes.instanceOf(Date),
   minuteInterval: React.PropTypes.oneOf([1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30]),
   onDateChange: React.PropTypes.func.isRequired,
+  textSize: React.PropTypes.number,
 };
