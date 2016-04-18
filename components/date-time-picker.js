@@ -32,12 +32,12 @@ const renderDates = (dates) => {
     if (todayStart <= date && todayEnd > date) {
       return "Today";
     } else {
-      return date.toDateString().replace(/\s\d*?$/, ""); 
+      return date.toDateString().replace(/\s\d*?$/, "");
     }
   });
 };
 
-var dates = []; 
+var dates = [];
 var dateStrings = [];
 const hours = makeRange(1, 12);
 var minutes = [];
@@ -49,7 +49,7 @@ export default class DateTimePicker extends Component {
     const { minuteInterval, date } = props;
     let dateIndices = this.getDateIndices(date);
     minutes = makeRange(0, 59, minuteInterval, true);
-    dates = dateRange(props);  
+    dates = dateRange(props);
     dateStrings = renderDates(dates);
 
     this.state = dateIndices;
@@ -76,7 +76,7 @@ export default class DateTimePicker extends Component {
     const { onDateChange } = this.props;
     const minimumDate = this.props.minimumDate || MINDATE;
     const maximumDate = this.props.maximumDate || MAXDATE;
-    
+
 
     if (date < minimumDate) {
       var dateIndices = this.getDateIndices(minimumDate);
@@ -84,7 +84,7 @@ export default class DateTimePicker extends Component {
     } else if (date > maximumDate) {
       var dateIndices = this.getDateIndices(maximumDate);
       var newDate = maximumDate;
-    } else { 
+    } else {
       var dateIndices = this.getDateIndices(date);
       var newDate = date;
     }
@@ -117,7 +117,7 @@ export default class DateTimePicker extends Component {
     let newDate = this.getNewDate(dateIndex, index, minuteIndex, ampmIndex);
     this.setDateState(newDate);
   }
-  
+
   onMinuteChange(index) {
     const { minuteInterval } = this.props;
     const { dateIndex, hourIndex, ampmIndex } = this.state;
@@ -147,7 +147,6 @@ export default class DateTimePicker extends Component {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: 153,
       }}
       >
         <WheelView
