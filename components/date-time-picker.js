@@ -8,10 +8,10 @@ const MILLIS_DAY = 86400000;
 const MINDATE = new Date(1999, 11, 31, 0, 0, 0, 0);
 const MAXDATE = new Date(new Date().getFullYear() + 25, 11, 31, 0, 0, 0, 0);
 
-const dateRange = () => {
+const dateRange = ({ minDisplayDate, maxDisplayDate }) => {
   let dates = [];
-  let start = MINDATE.getTime();
-  let end = MAXDATE.getTime();
+  let start = minDisplayDate ? minDisplayDate.getTime() : MINDATE.getTime();
+  let end = maxDisplayDate ? maxDisplayDate.getTime() : MAXDATE.getTime();
 
   for (start; start <= end; start += MILLIS_DAY) {
     dates.push(new Date(start));
@@ -56,8 +56,10 @@ export default class DateTimePicker extends Component {
   }
 
   getDateIndices(date) {
-    const { minuteInterval } = this.props;
-    let dateIndex = date.getTime() - MINDATE.getTime();
+    const { minuteInterval, minDisplayDate } = this.props;
+    const minDate = minDisplayDate || MINDATE;
+
+    let dateIndex = date.getTime() - minDate.getTime();
     dateIndex = Math.floor(dateIndex / MILLIS_DAY);
     let hourIndex = date.getHours() % 12;
     const ampmIndex = hourIndex === date.getHours() ? 0 : 1;
@@ -73,9 +75,9 @@ export default class DateTimePicker extends Component {
   }
 
   setDateState(date) {
-    const { onDateChange } = this.props;
-    const minimumDate = this.props.minimumDate || MINDATE;
-    const maximumDate = this.props.maximumDate || MAXDATE;
+    const { minDisplayDate, maxDisplayDate, onDateChange } = this.props;
+    const minimumDate = this.props.minimumDate || minDisplayDate || MINDATE;
+    const maximumDate = this.props.maximumDate || maxDisplayDate || MAXDATE;
 
 
     if (date < minimumDate) {
